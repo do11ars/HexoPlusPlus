@@ -120,7 +120,7 @@ else{swal("Configuration modification has been cancelled!","You entered a null v
 
 
 function del_config(index){
-swal({title:"Do you really want to delete this key?",text:"I believe your hand slipped",icon:"warning",buttons:["No", "Yes!"],dangerMode: true}).then((value) => {if(value){swal({title:"Do you really want to delete the data?",text:"I'm thinking you don't want to configure it again.",icon:"warning",buttons:["I gave up", "I am sure"],dangerMode: true}).then((value) => {if(value){swal({title:"Do you really want to start over?",text:"I don’t think it’s impossible",icon:"warning",buttons:["I'm wilted", "Death is like home"],dangerMode: true}).then((value) => {if(value){var ajax = ajaxObject();swal({title: "\nDeleting...",icon: "https://cdn.jsdelivr.net/gh/HexoPlusPlus/CDN@db63c79/loading.gif",text:"\n",button: false,closeModal: false,});
+swal({title:"Do you really want to delete this key?",text:"I believe your hand slipped",icon:"warning",buttons:["No", "Yes!"],dangerMode: true}).then((value) => {if(value){swal({title:"Do you really want to delete the data?",text:"I'm thinking you don't want to configure it again.",icon:"warning",buttons:["I give up", "I am sure"],dangerMode: true}).then((value) => {if(value){swal({title:"Do you really want to start over?",text:"I don’t think it’s impossible",icon:"warning",buttons:["I'm wilted", "Death is like home"],dangerMode: true}).then((value) => {if(value){var ajax = ajaxObject();swal({title: "\nDeleting...",icon: "https://cdn.jsdelivr.net/gh/HexoPlusPlus/CDN@db63c79/loading.gif",text:"\n",button: false,closeModal: false,});
     ajax.open( "post" , '/hpp/admin/api/del_config' , true );
     ajax.setRequestHeader( "Content-Type" , "text/plain" );
     ajax.onreadystatechange = function () {
@@ -134,7 +134,7 @@ swal({title:"Do you really want to delete this key?",text:"I believe your hand s
         }
     }
     ajax.send(index);}else{hpp_no()}})}else{hpp_no()}})}else{hpp_no()}})
-function hpp_no(){swal("You gave up on destroying data","Your data is safe","success")}
+function hpp_no(){swal("You give up on destroying data","Your data is safe","success")}
 
 
 };
