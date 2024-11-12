@@ -116,8 +116,8 @@ var drJson = "/hpp/admin/api/get_draftlist"
 			
 function del(name){
 	swal({
-  title: "Confirm！",
-  text: `You are about to delete ${name}，Are you sure you want to do this？`,
+  title: "Confirm!",
+  text: `You are about to delete ${name}，Are you sure you want to do this?`,
   icon: "warning",
   buttons: true,
   dangerMode: true,
@@ -140,7 +140,7 @@ function delfile(name){
     ajax.onreadystatechange = function () {
         if( ajax.readyState == 4 ) {
             if( ajax.status == 200 ) {swal.close()
-            swal("Deleted！","", {
+            swal("Deleted!","", {
   icon: "success",
   buttons: {
     yes: "Yes"
@@ -155,7 +155,7 @@ function delfile(name){
             }
 		else{swal.close()
 			swal({
-				title: "Failed！",
+				title: "Failed!",
 				text: "File deletion failed. Please make sure you have permission to delete the file or that the file exists.",
 				icon: "warning",
 			});
@@ -168,8 +168,8 @@ ajax.send(new Date().getTime());};
 
 function del_dr(name){
 	swal({
-  title: "Confirm！",
-  text: `You are about to delete ${name}，Are you sure you want to do this？`,
+  title: "Confirm!",
+  text: `You are about to delete ${name}，Are you sure you want to do this?`,
   icon: "warning",
   buttons: true,
   dangerMode: true,
@@ -192,7 +192,7 @@ function deldraft(name){
     ajax.onreadystatechange = function () {
         if( ajax.readyState == 4 ) {
             if( ajax.status == 200 ) {swal.close();
-            swal("Deleted！","", {
+            swal("Deleted!","", {
   icon: "success",
   buttons: {
     yes: "Yes"
@@ -207,7 +207,7 @@ function deldraft(name){
             }
 		else{swal.close()
 			swal({
-				title: "Failed！",
+				title: "Failed!",
 				text: "File deletion failed. Please make sure you have permission to delete the file or that the file exists.",
 				icon: "warning",
 			});
