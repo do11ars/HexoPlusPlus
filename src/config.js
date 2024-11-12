@@ -32,7 +32,7 @@ var ajax = ajaxObject();
     ajax.onreadystatechange = function () {
         if( ajax.readyState == 4 ) {swal.close()
             if( ajax.status == 200 ) {
-            swal("Configuration changed！", {
+            swal("Configuration changed!", {
   icon: "success",
   buttons: {
     yes: "Yes"
