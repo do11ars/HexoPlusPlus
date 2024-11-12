@@ -19,7 +19,7 @@ var ctJson = "/hpp/admin/api/getlist"
                             ${docsize}KB
                           <\/td>
 						  <td>
-                            已发布
+                            Published
                           <\/td>
                           <td>
                             <a href="https://cdn.jsdelivr.net/gh/${hpp_githubdocusername}/${hpp_githubdocrepo}@${hpp_githubdocbranch}/${value.path}">CDN Link<\/a>
@@ -51,7 +51,7 @@ var drJson = "/hpp/admin/api/get_draftlist"
                             ${docsize}KB
                           <\/td>
 						  <td>
-                            未发布
+                            Not Published
                           <\/td>
                           <td>
                             <a href="https://cdn.jsdelivr.net/gh/${hpp_githubdocusername}/${hpp_githubdocrepo}@${hpp_githubdocbranch}/${value.path}">CDN Link<\/a>
