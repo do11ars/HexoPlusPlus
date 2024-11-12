@@ -75,8 +75,8 @@ var ctJson = "/hpp/admin/api/getimglist"
             });  start_limit();$('.lazy_img').Lazy();$('.swipebox').swipebox();});
 			function del(name){
 	swal({
-  title: "Confirm！",
-  text: `You are about to delete ${name}，Are you sure you want to do this？`,
+  title: "Confirm!",
+  text: `You are about to delete ${name}，Are you sure you want to do this?`,
   icon: "warning",
   buttons: true,
   dangerMode: true,
@@ -99,7 +99,7 @@ var ctJson = "/hpp/admin/api/getimglist"
     ajax.onreadystatechange = function () {
         if( ajax.readyState == 4 ) {
             if( ajax.status == 200 ) {swal.close()
-            swal("Deleted！","", {
+            swal("Deleted!","", {
   icon: "success",
   buttons: {
     yes: "Yes"
@@ -114,7 +114,7 @@ var ctJson = "/hpp/admin/api/getimglist"
             }
 		else{swal.close()
 			swal({
-				title: "Failed！",
+				title: "Failed!",
 				text: "File deletion failed. Please make sure you have the necessary permissions to delete it, or check if the file exists.",
 				icon: "warning",
 			});
