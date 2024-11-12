@@ -45,7 +45,7 @@ var ajax = ajaxObject();
                 eval(ajax.responseText);
             }
             else {
-                sweetAlert("Oops", "Failed to check for updates！", "error");
+                sweetAlert("Oops", "Failed to check for updates!", "error");
             }
         }
     }
