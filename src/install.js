@@ -41,7 +41,7 @@ function ajaxObject() {
             try {
                 xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
             } catch(e) {
-                sweetAlert("糟糕", "你的浏览器不能上传文件", "error");
+                sweetAlert("Oops", "Your browser cannot upload the file", "error");
                 return false;
             }
         }
@@ -60,12 +60,12 @@ function start() {
         },
         1000);
         t++;
-        document.getElementById("butttt").innerHTML = "提交配置"
+        document.getElementById("butttt").innerHTML = "Submit configuration"
     } else {
-        document.getElementById("butttt").innerHTML = "配置上传中"
+        document.getElementById("butttt").innerHTML = "Configuration uploading"
 		let hpp_domain=document.getElementById("hpp_domain").value==""?window.location.host:document.getElementById("hpp_domain").value;
 		let hpp_username=document.getElementById("hpp_userimage").value==""?"https://cdn.jsdelivr.net/gh/ChenYFan/CDN@master/img/hpp_upload/1612610340000.jpg":document.getElementById("hpp_userimage").value;
-		let hpp_title=document.getElementById("hpp_title").value==""?"HexoPlusPlus小飞机":document.getElementById("hpp_title").value;
+		let hpp_title=document.getElementById("hpp_title").value==""?"HexoPlusPlus Backend":document.getElementById("hpp_title").value;
 		let hpp_usericon=document.getElementById("hpp_usericon").value==""?"https://cdn.jsdelivr.net/gh/HexoPlusPlus/CDN@master/doc_img/icon.png":document.getElementById("hpp_usericon").value;
 		let hpp_cors=document.getElementById("hpp_cors").value==""?"*":document.getElementById("hpp_cors").value
 		let hpp_autodate=document.getElementById("hpp_autodate").value==""?"False":document.getElementById("hpp_autodate").value
@@ -122,7 +122,7 @@ function start() {
 					document.querySelector('.cont_form_join').style.bottom = '-420px';
 					setTimeout(window.location.reload(),5000)
                 } else {
-document.getElementById("butttt").innerHTML = "配置上传失败，请重试"
+document.getElementById("butttt").innerHTML = "Configuration upload failed, please try again"
 }
             }
         }
