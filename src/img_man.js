@@ -56,27 +56,27 @@ var ctJson = "/hpp/admin/api/getimglist"
                             ${imgsize}KB
                           <\/td>
 						  <td>
-                            <a href="https://cdn.jsdelivr.net/gh/${hpp_githubimageusername}/${hpp_githubimagerepo}@${hpp_githubimagebranch}${hpp_githubimagepath}${value.name}" class="swipebox" title="图片预览"><img data-src="https://cdn.jsdelivr.net/gh/${hpp_githubimageusername}/${hpp_githubimagerepo}@${hpp_githubimagebranch}${hpp_githubimagepath}${value.name}" class="lazy_img" style="width:100px" src="${hpp_lazy_img}"></a>
+                            <a href="https://cdn.jsdelivr.net/gh/${hpp_githubimageusername}/${hpp_githubimagerepo}@${hpp_githubimagebranch}${hpp_githubimagepath}${value.name}" class="swipebox" title="Image Preview"><img data-src="https://cdn.jsdelivr.net/gh/${hpp_githubimageusername}/${hpp_githubimagerepo}@${hpp_githubimagebranch}${hpp_githubimagepath}${value.name}" class="lazy_img" style="width:100px" src="${hpp_lazy_img}"></a>
                           <\/td>
                           <td>
-                            <a href="https://cdn.jsdelivr.net/gh/${hpp_githubimageusername}/${hpp_githubimagerepo}@${hpp_githubimagebranch}${hpp_githubimagepath}${value.name}">CDN链接<\/a>
+                            <a href="https://cdn.jsdelivr.net/gh/${hpp_githubimageusername}/${hpp_githubimagerepo}@${hpp_githubimagebranch}${hpp_githubimagepath}${value.name}">CDN Link<\/a>
                           <\/td>
                           <td>
-                            <a href="javascript:del(\'${value.name}\');">删除<\/a>
+                            <a href="javascript:del(\'${value.name}\');">Delete<\/a>
                           <\/td>
 						  <td>
-                            <a href="${value.download_url}">原始地址<\/a>
+                            <a href="${value.download_url}">Original URL<\/a>
                           <\/td>
 						  <td>
-                            <a href="${value.html_url}">Github地址<\/a>
+                            <a href="${value.html_url}">GitHub URL<\/a>
                           <\/td>
                         <\/tr>
                 `);
             });  start_limit();$('.lazy_img').Lazy();$('.swipebox').swipebox();});
 			function del(name){
 	swal({
-  title: "确定！",
-  text: `你将要删除${name}，真的这么做么？`,
+  title: "Confirm!",
+  text: `You are about to delete ${name}，Are you sure you want to do this?`,
   icon: "warning",
   buttons: true,
   dangerMode: true,
@@ -85,24 +85,24 @@ var ctJson = "/hpp/admin/api/getimglist"
   if (willDelete) {
     delfile(name);
   } else {
-    swal("好的，当前文件没有被删除", {
+    swal("Okay, the current file has not been deleted", {
       icon: "success",
     });
   }
 });
 	}
 	function delfile(name){
-			swal({title: "\n删除中...",icon: "https://cdn.jsdelivr.net/gh/HexoPlusPlus/CDN@db63c79/loading.gif",text:"\n",button: false,closeModal: false,});
+			swal({title: "\nDeleting...",icon: "https://cdn.jsdelivr.net/gh/HexoPlusPlus/CDN@db63c79/loading.gif",text:"\n",button: false,closeModal: false,});
 	var ajax = ajaxObject();
     ajax.open( "GET" , '/hpp/admin/api/delimage/'+name , true );
     ajax.setRequestHeader( "Content-Type" , "text/plain" );
     ajax.onreadystatechange = function () {
         if( ajax.readyState == 4 ) {
             if( ajax.status == 200 ) {swal.close()
-            swal("已删除！","", {
+            swal("Deleted!","", {
   icon: "success",
   buttons: {
-    yes: "是"
+    yes: "Yes"
   },
 })
 .then((value) => {
@@ -114,8 +114,8 @@ var ctJson = "/hpp/admin/api/getimglist"
             }
 		else{swal.close()
 			swal({
-				title: "失败！",
-				text: "文件删除失败，请确定您是否有权限删除，或者该文件是否存在",
+				title: "Failed!",
+				text: "File deletion failed. Please make sure you have the necessary permissions to delete it, or check if the file exists.",
 				icon: "warning",
 			});
 			}

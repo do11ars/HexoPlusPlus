@@ -68,15 +68,15 @@ function hpp_start_or_stop_backup(){
 var notyf = new Notyf();
 if(localStorage.getItem("hpp_editor_autobackup")=="2"){
 localStorage.setItem("hpp_editor_autobackup","0");
-notyf.error('嘿！你关闭了自动备份！注意数据安全！');
+notyf.error('Hey! You've disabled automatic backups! Please be mindful of data security!');
 }
 else if(localStorage.getItem("hpp_editor_autobackup")=="0"){
 localStorage.setItem("hpp_editor_autobackup","1");
-notyf.success('自动备份打开成功！自动备份提醒打开成功！'); 
+notyf.success('Automatic backup enabled successfully! Automatic backup reminder enabled successfully!'); 
 }
 else{
 localStorage.setItem("hpp_editor_autobackup","2");
-notyf.success('自动备份打开成功！自动备份提醒关闭成功！'); 
+notyf.success('Automatic backup enabled successfully! Automatic backup reminder disabled successfully!'); 
 }
 };
 function hpp_upload_photo(){}
@@ -86,7 +86,7 @@ if(document.getElementById(`text_${ele}`).style.display != "none"){
 document.getElementById(`div_${ele}`).style.display = "block";
 document.getElementById(`text_${ele}`).style.display = "none";
 document.getElementById(`hpp_eye_${ele}`).innerHTML=`<i class="fa fa-eye-slash fa-2x"><\/i>`
-document.getElementById(`div_${ele}`).innerHTML="正在渲染markdown文本中..."
+document.getElementById(`div_${ele}`).innerHTML="Rendering markdown text..."
 document.getElementById(`div_${ele}`).innerHTML=marked(document.getElementById(`text_${ele}`).value)
 
 }else{
@@ -329,19 +329,19 @@ var ajax = ajaxObject();
 					document.getElementById("choo").innerHTML+=`<option>${arr_list[i]}</option>`
 				}
 				$('#choo').editableSelect();
-				choo.placeholder = "选择一个文件或直接新增一个文件"
+				choo.placeholder = "Select a file or create a new one"
 				choo.value=localStorage.getItem(`hpp_hpp_docs_choo_backup`);
 
             }
             else {
-			sweetAlert("糟糕", "拉取文件失败！", "error")
+			sweetAlert("Oops", "Failed to fetch the file！", "error")
             }
         }
     }
 ajax2.send(new Date().getTime());
             }
             else {
-			sweetAlert("糟糕", "拉取文件失败！", "error")
+			sweetAlert("Oops", "Failed to fetch the file！", "error")
             }
         }
     }
@@ -359,13 +359,13 @@ function copyToClip(content, message) {
     document.execCommand("copy"); 
     document.body.removeChild(aux);
     if (message == null) {
-        sweetAlert("复制成功");
+        sweetAlert("Copied successfully");
     } else{
         eval(message);
     }
 }
 function readFile() {
-	swal({title: "\n上传中...",icon: "https://cdn.jsdelivr.net/gh/HexoPlusPlus/CDN@db63c79/loading.gif",text:"\n",button: false,closeModal: false,});
+	swal({title: "\nUploading...",icon: "https://cdn.jsdelivr.net/gh/HexoPlusPlus/CDN@db63c79/loading.gif",text:"\n",button: false,closeModal: false,});
     var file = this.files[0];
     var f_name = file["name"].substring(file["name"].lastIndexOf(".")+1);
     var reader = new FileReader(); 
@@ -389,16 +389,16 @@ function hpp_uploadimage(image,f_name){
             if( ajax.status == 200 ) {
 				swal.close()
 				hpp_add_mark(`![](${ajax.responseText})`)
-                sweetAlert("成功",  "图片已更新", "success");
+                sweetAlert("Success", "Image has been updated", "success");
             }
 		else if( ajax.status == 201 ){
 			swal.close()
 			hpp_add_mark(`![](${ajax.responseText})`)
-		    sweetAlert('成功','图片已上传','success')
+		    sweetAlert('Success', 'Image has been uploaded','success')
             }
             else {
 			swal.close()
-			sweetAlert("糟糕", "上传图片失败!", "error")
+			sweetAlert("Oops", "Failed to upload image!", "error")
             }
         }
     }
@@ -413,28 +413,28 @@ function hpp_upload_md(){
         if( ajax.readyState == 4 ) {
             if( ajax.status == 200 ) {
 				swal.close()
-                sweetAlert("成功",  "文件已上传", "success");
+                sweetAlert("Success", "File has been uploaded", "success");
 				localStorage.setItem("hpp_hpp_docs_backup","");
 				localStorage.setItem("hpp_hpp_docs_choo_backup","");
             }
 		else if( ajax.status == 201 ){
 				swal.close()
-                sweetAlert("成功",  "文件已新建", "success");
+                sweetAlert("Success", "File has been created", "success");
             }
             else {
 				swal.close()
-                sweetAlert("糟糕", "上传文件失败!", "error");
+                sweetAlert("Oops", "Failed to upload file!", "error");
             }
         }
     }
     ajax.send(base64Encode(document.getElementById("text_hpp_doc_editor").value));
 }
 function hpp_get_md(){
-	swal({title: "\n加载中...",icon: "https://cdn.jsdelivr.net/gh/HexoPlusPlus/CDN@db63c79/loading.gif",text:"\n",button: false,closeModal: false,});
+	swal({title: "\nLoading...",icon: "https://cdn.jsdelivr.net/gh/HexoPlusPlus/CDN@db63c79/loading.gif",text:"\n",button: false,closeModal: false,});
 document.getElementById(`div_hpp_doc_editor`).style.display = "none";
 document.getElementById(`text_hpp_doc_editor`).style.display = "block";
 document.getElementById(`hpp_eye_hpp_doc_editor`).innerHTML=`<i class="fa fa-eye fa-2x"><\/i>`
-hpp_replace_mark("# 正在获取"+choo.value+"中")
+hpp_replace_mark("# Fetching "+choo.value+" In progress")
 var ajax = ajaxObject();
     ajax.open( "post" , '/hpp/admin/api/getdoc/'+choo.value , true );
     ajax.setRequestHeader( "Content-Type" , "text/plain" );
@@ -453,11 +453,11 @@ var ajax = ajaxObject();
 	ajax.send(new Date().getTime());
 }
 function hpp_get_scaffolds(){
-swal({title: "\n加载模板中...",icon: "https://cdn.jsdelivr.net/gh/HexoPlusPlus/CDN@db63c79/loading.gif",text:"\n",button: false,closeModal: false,});
+swal({title: "\nLoading template...",icon: "https://cdn.jsdelivr.net/gh/HexoPlusPlus/CDN@db63c79/loading.gif",text:"\n",button: false,closeModal: false,});
 document.getElementById(`div_hpp_doc_editor`).style.display = "none";
 document.getElementById(`text_hpp_doc_editor`).style.display = "block";
 document.getElementById(`hpp_eye_hpp_doc_editor`).innerHTML=`<i class="fa fa-eye fa-2x"><\/i>`
-hpp_replace_mark("# 正在获取模板文件中")
+hpp_replace_mark("# Fetching template file")
 var ajax = ajaxObject();
     ajax.open( "post" , '/hpp/admin/api/getscaffolds' , true );
     ajax.setRequestHeader( "Content-Type" , "text/plain" );
@@ -469,8 +469,8 @@ var ajax = ajaxObject();
             }
             else {
 			swal.close()
-			sweetAlert("糟糕", "拉取模板文件失败，请检查其是否存在", "error");
-			hpp_replace_mark("# 拉取模板文件失败，请检查其是否存在")
+			sweetAlert("Oops", "Failed to fetch the template file. Please check if it exists", "error");
+			hpp_replace_mark("# Failed to fetch the template file. Please check if it exists")
             }
         }
     }
@@ -478,7 +478,7 @@ var ajax = ajaxObject();
 }
 
 function hpp_upload_draft(){
-	swal({title: "\n上传中...",icon: "https://cdn.jsdelivr.net/gh/HexoPlusPlus/CDN@db63c79/loading.gif",text:"\n",button: false,closeModal: false,});
+	swal({title: "\nUploading...",icon: "https://cdn.jsdelivr.net/gh/HexoPlusPlus/CDN@db63c79/loading.gif",text:"\n",button: false,closeModal: false,});
 	var ajax = ajaxObject();
     ajax.open( "post" , '/hpp/admin/api/adddraft/'+choo.value , true );
     ajax.setRequestHeader( "Content-Type" , "text/plain" );
@@ -486,28 +486,28 @@ function hpp_upload_draft(){
         if( ajax.readyState == 4 ) {
             if( ajax.status == 200 ) {
 				swal.close()
-                sweetAlert("成功",  "文件已上传", "success");
+                sweetAlert("Success", "File has been uploaded", "success");
 				localStorage.setItem("hpp_hpp_docs_backup","");
 				localStorage.setItem("hpp_hpp_docs_choo_backup","");
             }
 		else if( ajax.status == 201 ){
 			swal.close()
-                sweetAlert("成功",  "文件已新建", "success");
+                sweetAlert("Success", "File has been created", "success");
             }
             else {
 				swal.close()
-                sweetAlert("糟糕", "上传文件失败!", "error");
+                sweetAlert("Oops", "Failed to upload file!", "error");
             }
         }
     }
     ajax.send(base64Encode(document.getElementById("text_hpp_doc_editor").value));
 }
 function hpp_get_draft(){
-	swal({title: "\n加载中...",icon: "https://cdn.jsdelivr.net/gh/HexoPlusPlus/CDN@db63c79/loading.gif",text:"\n",button: false,closeModal: false,});
+	swal({title: "\nLoading...",icon: "https://cdn.jsdelivr.net/gh/HexoPlusPlus/CDN@db63c79/loading.gif",text:"\n",button: false,closeModal: false,});
 document.getElementById(`div_hpp_doc_editor`).style.display = "none";
 document.getElementById(`text_hpp_doc_editor`).style.display = "block";
 document.getElementById(`hpp_eye_hpp_doc_editor`).innerHTML=`<i class="fa fa-eye fa-2x"><\/i>`
-hpp_replace_mark("正在获取"+choo.value+"中")
+hpp_replace_mark("Fetching "+choo.value+" In progress")
 var ajax = ajaxObject();
     ajax.open( "post" , '/hpp/admin/api/getdraft/'+choo.value , true );
     ajax.setRequestHeader( "Content-Type" , "text/plain" );
@@ -526,7 +526,7 @@ var ajax = ajaxObject();
 	ajax.send(new Date().getTime());
 }
 function hpp_del_index(){
-	swal({title: "\n加载中...",icon: "https://cdn.jsdelivr.net/gh/HexoPlusPlus/CDN@db63c79/loading.gif",text:"\n",button: false,closeModal: false,});
+	swal({title: "\nLoading...",icon: "https://cdn.jsdelivr.net/gh/HexoPlusPlus/CDN@db63c79/loading.gif",text:"\n",button: false,closeModal: false,});
 	var ajax = ajaxObject();
     ajax.open( "post" , '/hpp/admin/api/index_del' , true );
     ajax.setRequestHeader( "Content-Type" , "text/plain" );
@@ -534,11 +534,11 @@ function hpp_del_index(){
         if( ajax.readyState == 4 ) {
             if( ajax.status == 200 ) {
 				swal.close()
-                sweetAlert("成功",  "索引已清除！", "success");
+                sweetAlert("Success", "Index has been cleared！", "success");
             }
             else {
 				swal.close()
-                sweetAlert("糟糕", "索引清除失败！", "error");
+                sweetAlert("Oops", "Failed to clear index！", "error");
             }
         }
     }

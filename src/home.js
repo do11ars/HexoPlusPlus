@@ -9,7 +9,7 @@ if( ajax.readyState == 4 ) {
         //console.log(JSON.parse(ajax.responseText).length)    
     }
     else {
-        document.getElementById("document_all").innerHTML="获取失败"
+        document.getElementById("document_all").innerHTML="Failed to fetch"
 			}
         }
     }
@@ -26,7 +26,7 @@ if( ajax.readyState == 4 ) {
         //console.log(JSON.parse(ajax.responseText).length)    
     }
     else {
-        document.getElementById("document_all").innerHTML="获取失败"
+        document.getElementById("document_all").innerHTML="Failed to retrieve"
 			}
         }
     }
@@ -35,7 +35,7 @@ if( ajax.readyState == 4 ) {
 
 
 function checkUpdate(){
-swal({title: "\n检测更新中...",icon: "https://cdn.jsdelivr.net/gh/HexoPlusPlus/CDN@db63c79/loading.gif",text:"\n",button: false,closeModal: false,});
+swal({title: "\nChecking for updates...",icon: "https://cdn.jsdelivr.net/gh/HexoPlusPlus/CDN@db63c79/loading.gif",text:"\n",button: false,closeModal: false,});
 var ajax = ajaxObject();
     ajax.open( "post" , '/hpp/admin/api/checkupdate' , true );
     ajax.setRequestHeader( "Content-Type" , "text/plain" );
@@ -45,7 +45,7 @@ var ajax = ajaxObject();
                 eval(ajax.responseText);
             }
             else {
-                sweetAlert("糟糕", "检测更新失败！", "error");
+                sweetAlert("Oops", "Failed to check for updates!", "error");
             }
         }
     }

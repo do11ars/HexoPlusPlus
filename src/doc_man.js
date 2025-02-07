@@ -19,19 +19,19 @@ var ctJson = "/hpp/admin/api/getlist"
                             ${docsize}KB
                           <\/td>
 						  <td>
-                            已发布
+                            Published
                           <\/td>
                           <td>
-                            <a href="https://cdn.jsdelivr.net/gh/${hpp_githubdocusername}/${hpp_githubdocrepo}@${hpp_githubdocbranch}/${value.path}">CDN链接<\/a>
+                            <a href="https://cdn.jsdelivr.net/gh/${hpp_githubdocusername}/${hpp_githubdocrepo}@${hpp_githubdocbranch}/${value.path}">CDN Link<\/a>
                           <\/td>
                           <td>
-                            <a href="javascript:del(\'${arr_path}\');">删除<\/a>
+                            <a href="javascript:del(\'${arr_path}\');">Delete<\/a>
                           <\/td>
 						  <td>
-                            <a href="${value.download_url}">原始地址<\/a>
+                            <a href="${value.download_url}">Original URL<\/a>
                           <\/td>
 						  <td>
-                            <a href="${value.html_url}">Github地址<\/a>
+                            <a href="${value.html_url}">Github URL<\/a>
                           <\/td>
                         <\/tr>
                 `);
@@ -51,19 +51,19 @@ var drJson = "/hpp/admin/api/get_draftlist"
                             ${docsize}KB
                           <\/td>
 						  <td>
-                            未发布
+                            Not Published
                           <\/td>
                           <td>
-                            <a href="https://cdn.jsdelivr.net/gh/${hpp_githubdocusername}/${hpp_githubdocrepo}@${hpp_githubdocbranch}/${value.path}">CDN链接<\/a>
+                            <a href="https://cdn.jsdelivr.net/gh/${hpp_githubdocusername}/${hpp_githubdocrepo}@${hpp_githubdocbranch}/${value.path}">CDN Link<\/a>
                           <\/td>
                           <td>
-                            <a href="javascript:del_dr(\'${arr_path}\');">删除<\/a>
+                            <a href="javascript:del_dr(\'${arr_path}\');">Delete<\/a>
                           <\/td>
 						  <td>
-                            <a href="${value.download_url}">原始地址<\/a>
+                            <a href="${value.download_url}">Original URL<\/a>
                           <\/td>
 						  <td>
-                            <a href="${value.html_url}">Github地址<\/a>
+                            <a href="${value.html_url}">GitHub URL<\/a>
                           <\/td>
                         <\/tr>
                 `);
@@ -116,8 +116,8 @@ var drJson = "/hpp/admin/api/get_draftlist"
 			
 function del(name){
 	swal({
-  title: "确定！",
-  text: `你将要删除${name}，真的这么做么？`,
+  title: "Confirm!",
+  text: `You are about to delete ${name}，Are you sure you want to do this?`,
   icon: "warning",
   buttons: true,
   dangerMode: true,
@@ -126,24 +126,24 @@ function del(name){
   if (willDelete) {
     delfile(name);
   } else {
-    swal("好的，当前文件没有被删除", {
+    swal("Okay，The current file has not been deleted", {
       icon: "success",
     });
   }
 });
 	}
 function delfile(name){
-	swal({title: "\n删除中...",icon: "https://cdn.jsdelivr.net/gh/HexoPlusPlus/CDN@db63c79/loading.gif",text:"\n",button: false,closeModal: false,});
+	swal({title: "\nDeleting...",icon: "https://cdn.jsdelivr.net/gh/HexoPlusPlus/CDN@db63c79/loading.gif",text:"\n",button: false,closeModal: false,});
 	var ajax = ajaxObject();
     ajax.open( "GET" , '/hpp/admin/api/deldoc/'+name , true );
     ajax.setRequestHeader( "Content-Type" , "text/plain" );
     ajax.onreadystatechange = function () {
         if( ajax.readyState == 4 ) {
             if( ajax.status == 200 ) {swal.close()
-            swal("已删除！","", {
+            swal("Deleted!","", {
   icon: "success",
   buttons: {
-    yes: "是"
+    yes: "Yes"
   },
 })
 .then((value) => {
@@ -155,8 +155,8 @@ function delfile(name){
             }
 		else{swal.close()
 			swal({
-				title: "失败！",
-				text: "文件删除失败，请确定您是否有权限删除，或者该文件是否存在",
+				title: "Failed!",
+				text: "File deletion failed. Please make sure you have permission to delete the file or that the file exists.",
 				icon: "warning",
 			});
 			}
@@ -168,8 +168,8 @@ ajax.send(new Date().getTime());};
 
 function del_dr(name){
 	swal({
-  title: "确定！",
-  text: `你将要删除${name}，真的这么做么？`,
+  title: "Confirm!",
+  text: `You are about to delete ${name}，Are you sure you want to do this?`,
   icon: "warning",
   buttons: true,
   dangerMode: true,
@@ -178,24 +178,24 @@ function del_dr(name){
   if (willDelete) {
     deldraft(name);
   } else {
-    swal("好的，当前文件没有被删除", {
+    swal("Okay，The current file has not been deleted", {
       icon: "success",
     });
   }
 });
 	}
 function deldraft(name){
-	swal({title: "\n删除中...",icon: "https://cdn.jsdelivr.net/gh/HexoPlusPlus/CDN@db63c79/loading.gif",text:"\n",button: false,closeModal: false,});
+	swal({title: "\nDeleting...",icon: "https://cdn.jsdelivr.net/gh/HexoPlusPlus/CDN@db63c79/loading.gif",text:"\n",button: false,closeModal: false,});
 	var ajax = ajaxObject();
     ajax.open( "GET" , '/hpp/admin/api/deldraft/'+name , true );
     ajax.setRequestHeader( "Content-Type" , "text/plain" );
     ajax.onreadystatechange = function () {
         if( ajax.readyState == 4 ) {
             if( ajax.status == 200 ) {swal.close();
-            swal("已删除！","", {
+            swal("Deleted!","", {
   icon: "success",
   buttons: {
-    yes: "是"
+    yes: "Yes"
   },
 })
 .then((value) => {
@@ -207,8 +207,8 @@ function deldraft(name){
             }
 		else{swal.close()
 			swal({
-				title: "失败！",
-				text: "文件删除失败，请确定您是否有权限删除，或者该文件是否存在",
+				title: "Failed!",
+				text: "File deletion failed. Please make sure you have permission to delete the file or that the file exists.",
 				icon: "warning",
 			});
 			}

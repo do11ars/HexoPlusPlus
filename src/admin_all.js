@@ -1563,11 +1563,11 @@ function kick(){
     ajax.onreadystatechange = function () {
         if( ajax.readyState == 4 ) {
             if( ajax.status == 200 ) {
-                sweetAlert("成功",  "已签到", "success");
+                sweetAlert("Success", "Successfully Signed In", "success");
 		    
             }
             else {
-                sweetAlert("糟糕", "签到失败", "error");
+                sweetAlert("Oops", "Sign In Failed", "error");
             }
         }
     }
@@ -1591,7 +1591,7 @@ function ajaxObject() {
             try {
                 xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
             } catch (e) {
-                sweetAlert("糟糕", "你的浏览器不能上传文件", "error");
+                sweetAlert("Oops", "Your browser cannot upload files", "error");
                 return false;
             }
         }

@@ -1,15 +1,15 @@
 function hpp_update(){
-swal({title: "\n更新中...",icon: "https://cdn.jsdelivr.net/gh/HexoPlusPlus/CDN@db63c79/loading.gif",text:"\n",button: false,closeModal: false,});
+swal({title: "\nUpdating...",icon: "https://cdn.jsdelivr.net/gh/HexoPlusPlus/CDN@db63c79/loading.gif",text:"\n",button: false,closeModal: false,});
 var ajax = ajaxObject();
     ajax.open( "get" , '/hpp/admin/api/update' , true );
     ajax.setRequestHeader( "Content-Type" , "text/plain" );
     ajax.onreadystatechange = function () {
         if( ajax.readyState == 4 ) {swal.close();
             if( ajax.responseText == "true" ) {
-                swal("更新完毕！", {
+                swal("Update Complete！", {
   icon: "success",
   buttons: {
-    yes: "是"
+    yes: "Yes"
   },
 })
 .then((value) => {
@@ -20,7 +20,7 @@ var ajax = ajaxObject();
 });
             }
             else {
-                sweetAlert("糟糕", "更新失败!", "error");
+                sweetAlert("Oops", "Update Failed!", "error");
             }
         }
     }
@@ -29,16 +29,16 @@ var ajax = ajaxObject();
 
 if(hpp_ver == 'HexoPlusPlus@1.2.0'){
   swal({
-title: "成功",
-    text: "无需更新，当前已是最新版本",
+title: "Success",
+    text: "No update needed, you're already on the latest version",
     icon: "success",
 });
 }else{
-swal("存在1.2.0更新，是否更新？", {
+swal("Update to version 1.2.0 available, do you want to update？", {
   icon: "warning",
   buttons: {
-    cancel: "否",
-    update: "是"
+    cancel: "No",
+    update: "Yes"
   },
 })
 .then((value) => {
@@ -49,7 +49,7 @@ swal("存在1.2.0更新，是否更新？", {
 	  break;
  
     default:
-      swal("更新已取消",{icon: "warning"});
+      swal("Update Cancelled",{icon: "warning"});
 	  break;
   }
 });
